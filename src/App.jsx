@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react"
 
-function App() {
-
+const FollowMouse = () => {
   const [enabled, setEnabled] = useState(false)
-  const [position,setPosition]=useState({x:0,y:0})//Buena practica inicializar el usuState
+  const [position, setPosition] = useState({ x: 0, y: 0 })//Buena practica inicializar el usuState
   useEffect(() => {
     console.log('efecto', { enabled })
 
     const handleMove = (event) => {
       const { clientX, clientY } = event
       console.log(clientX, clientY)
-      setPosition({x:clientX,y:clientY})
+      setPosition({ x: clientX, y: clientY })
     }
 
     if (enabled) {
@@ -35,14 +34,24 @@ function App() {
         width: 50,
         height: 50,
         transform: `translate(${position.x}px, ${position.y}px)`
-        
-
-
       }} />
       <button onClick={() => setEnabled(!enabled)}>
         {enabled ? 'Desactivar' : 'Activar'}  seguir puntero</button>
     </main>
   )
 }
+
+function App() {
+
+  return (
+    <main>
+      {<FollowMouse />}
+
+
+
+    </main>
+  )
+}
+
 
 export default App
